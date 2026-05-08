@@ -1,0 +1,25 @@
+- name: Create directory for app
+  ansible.builtin.file:
+    path: /opt/app
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copying app files
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /opt/app/
+    owner: root
+    group: root
+    mode: "0644"
+  loop:
+    - Dockerfile
+    - main.py
+    - requirements.txt
+    - compose.yml
+
+- name: Start docker compose
+  community.docker.docker_compose_v2:
+    project_src: "/opt/app/"
+    state: present
