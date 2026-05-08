@@ -1,0 +1,28 @@
+- name: Create directory
+  ansible.builtin.file:
+    path: /opt/nginx
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Copy default config for nginx
+  ansible.builtin.template:
+    src: "{{ nginx_config_template_file }}"
+    dest: /opt/nginx/default.conf
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Copy docker compose for nginx
+  ansible.builtin.copy:
+    src: compose.yml
+    dest: "/opt/nginx/compose.yml"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Start docker compose
+  community.docker.docker_compose_v2:
+    project_src: "/opt/nginx/"
+    state: present
