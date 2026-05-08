@@ -1,0 +1,16 @@
+---
+
+- name: Deploy app
+  hosts: all
+  become: true
+  pre_tasks:
+
+    - name: Update system
+      ansible.builtin.apt:
+        update_cache: true
+        upgrade: dist
+  
+- name: Setup nginx
+  hosts: nginx
+  roles:
+    - nginx
