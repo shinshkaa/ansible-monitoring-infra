@@ -1,6 +1,6 @@
 upstream backend{
-	server app1:8080;
-	server app2:8080;
+	server {{ app1_address }};
+	server {{ app2_address }};
 }
 
 server {

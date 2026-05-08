@@ -9,7 +9,12 @@
       ansible.builtin.apt:
         update_cache: true
         upgrade: dist
-  
+
+- name: Deploy app
+  hosts: app
+  roles:
+    - app
+
 - name: Setup nginx
   hosts: nginx
   roles:
