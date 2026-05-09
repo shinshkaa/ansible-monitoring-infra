@@ -22,6 +22,22 @@
     group: root
     mode: "0644"
 
+- name: Create prometheus directory
+  ansible.builtin.file:
+    path: /opt/monitoring/prometheus
+    state: directory
+    owner: "65534"
+    group: "65534"
+    mode: "0755"
+
+- name: Create grafana directory
+  ansible.builtin.file:
+    path: /opt/monitoring/grafana
+    state: directory
+    owner: "472"
+    group: "472"
+    mode: "0755"
+
 - name: Start docker compose
   community.docker.docker_compose_v2:
     project_src: /opt/monitoring/
