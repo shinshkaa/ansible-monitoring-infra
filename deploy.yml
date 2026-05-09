@@ -27,3 +27,9 @@
   become: true
   roles:
     - nginx
+
+- name: Setup monitoring
+  hosts: monitoring
+  become: true
+  roles:
+    - monitoring
