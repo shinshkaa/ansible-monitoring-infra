@@ -41,7 +41,7 @@ jobs:
           cat > ansible.cfg <<EOF
           [defaults]
           inventory=inventory
-          remote_user="{{ secrets.SSH_USER }}"
+          remote_user= ${{ secrets.SSH_USER }}
           private_key_file=~/.ssh/id_ed25519
           EOF
       - name: Add hosts to known_hosts
