@@ -1,2 +1,2 @@
 inventory
-host_vars/vm*.yml
+ansible.cfg
