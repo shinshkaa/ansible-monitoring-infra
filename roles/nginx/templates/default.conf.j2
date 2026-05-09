@@ -1,4 +1,4 @@
-upstream backend{
+upstream backend {
 {% for host in groups['app'] %}
 	server {{ hostvars[host].ansible_host }}:80;
 {% endfor %}
