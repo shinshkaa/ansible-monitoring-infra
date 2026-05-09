@@ -35,80 +35,41 @@ Multi-host infrastructure project with automated deployment using Ansible.
 # Project structure
 
 ```bash
-**.**
-
+.
 ├── README
-
-├── ansible.cfg
-
 ├── ansible.cfg.example
-
 ├── deploy.yml
-
-├── **host_vars**
-
+├── host_vars
 │   ├── vm1.yml
-
 │   ├── vm2.yml
-
 │   ├── vm3.yml
-
 │   └── vm4.yml
-
-├── inventory
-
 ├── inventory.example
-
-└── **roles**
-
-    ├── **app**
-
-    │   ├── **files**
-
+└── roles
+    ├── app
+    │   ├── files
     │   │   ├── Dockerfile
-
     │   │   ├── compose.yml
-
     │   │   ├── main.py
-
     │   │   └── requirements.txt
-
-    │   └── **tasks**
-
+    │   └── tasks
     │       └── main.yml
-
-    ├── **docker**
-
-    │   └── **tasks**
-
+    ├── docker
+    │   └── tasks
     │       └── main.yml
-
-    ├── **monitoring**
-
-    │   ├── **files**
-
+    ├── monitoring
+    │   ├── files
     │   │   └── compose.yml
-
-    │   ├── **tasks**
-
+    │   ├── tasks
     │   │   └── main.yml
-
-    │   └── **templates**
-
+    │   └── templates
     │       └── prometheus.yml.j2
-
-    └── **nginx**
-
-        ├── **files**
-
+    └── nginx
+        ├── files
         │   └── compose.yml
-
-        ├── **tasks**
-
+        ├── tasks
         │   └── main.yml
-
-        └── **templates**
-
+        └── templates
             └── default.conf.j2
 ```
 
