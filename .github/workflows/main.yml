@@ -10,12 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@4
+        uses: actions/checkout@v4
 
       - name: Install ansible
         run: |
           sudo apt update
           sudo apt install -y ansible
+
+      - name: Setup ssh key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
 
       - name: Create inventory
         run: |
@@ -35,8 +41,8 @@ jobs:
           cat > ansible.cfg <<EOF
           [defaults]
           inventory=inventory
-          remote_user=sanketo
-          private_key_file=${{ secrets.SSH_PRIVATE_KEY }}
+          remote_user="{{ secrets.SSH_USER }}"
+          private_key_file=~/.ssh/id_ed25519
           EOF
       - name: Add hosts to known_hosts
         run: |
