@@ -1,0 +1,29 @@
+- name: Create directory for monitoring
+  ansible.builtin.file:
+    path: /opt/monitoring
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Copy prometheus config
+  ansible.builtin.template:
+    src: "{{ prometheus_config_template_file }}"
+    dest: /opt/monitoring/prometheus.yml
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Copy docker compose file for monitoring
+  ansible.builtin.copy:
+    src: compose.yml
+    dest: /opt/monitoring/compose.yml
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Start docker compose
+  community.docker.docker_compose_v2:
+    project_src: /opt/monitoring/
+    state: present
+    recreate: always
