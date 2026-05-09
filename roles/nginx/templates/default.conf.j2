@@ -1,6 +1,7 @@
 upstream backend{
-	server {{ app1_address }};
-	server {{ app2_address }};
+{% for host in groups['app'] %}
+	server {{ hostvars[host].ansible_host }}:80;
+{% endfor %}
 }
 
 server {
