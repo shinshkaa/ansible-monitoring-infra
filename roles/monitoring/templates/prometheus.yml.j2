@@ -13,9 +13,9 @@ scrape_configs:
         - "{{ hostvars[host].ansible_host }}:80"
 {% endfor %}
 
-  - job_name: node_exporter
+  - job_name: node_exporter_app
     static_configs:
       - targets:
 {% for host in groups['app'] %}
-        - "{{ hostvars[host].ansible_host }}:80"
+        - "{{ hostvars[host].ansible_host }}:9100"
 {% endfor %}
