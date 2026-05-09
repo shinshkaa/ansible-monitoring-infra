@@ -1,11 +1,12 @@
 from flask import Flask
+import socket
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    return "hello"
+    return f"hello from {socket.gethostname()}"
 
 @app.route("/health")
 def health():
