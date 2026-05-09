@@ -1,0 +1,9 @@
+[nginx]
+vm1 ansible_host=<VM_IP>
+
+[app]
+vm2 ansible_host=<VM_IP>
+vm3 ansible_host=<VM_IP>
+
+[monitoring]
+vm4 ansible_host=<VM_IP>

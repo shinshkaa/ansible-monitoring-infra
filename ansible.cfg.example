@@ -1,0 +1,4 @@
+[defaults]
+inventory=inventory
+private_key_file=<PATH_TO_SSH_PRIVATE_KEY>
+remote_user=<SSH_USER>
